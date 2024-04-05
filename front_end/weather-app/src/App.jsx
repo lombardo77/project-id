@@ -3,7 +3,7 @@ import Weather from './Components/Weather.jsx'
 function App() {
   return (
     <>
-      <Weather/>
+      <Weather zip="20003"/>
     </>
   )
 }
