@@ -20,8 +20,8 @@ function Weather() {
   return (
     <div className="app">
       <form>
-        <input id="input" placeholder="zip code..." onChange={(e) => changeInput(e)}/>
-        <button onClick={(e) => {
+        <input className="bar" id="input" placeholder="zip code..." onChange={(e) => changeInput(e)}/>
+        <button className="bar" onClick={(e) => {
           handleChangeProp(e)
         }
         }>Search</button>

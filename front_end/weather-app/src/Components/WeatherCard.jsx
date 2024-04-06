@@ -1,6 +1,10 @@
 import {useState, useEffect} from 'react'
-import sunny from "../../img/1530392_weather_sun_sunny_temperature_icon.png"
-import rainy from "../../img/1530370_weather_clouds_hail_hailstone_snow_icon.png"
+import daySunny from "../../img/1530392_weather_sun_sunny_temperature_icon.png"
+import dayRainy from "../../img/1530362_weather_clouds_cloudy_forecast_rain_icon.png"
+import night from "../../img/1530382_weather_moon_moonlight_night_icon.png"
+import nightRainy from "../../img/1530379_weather_clouds_moon_night_rain_icon.png"
+import dayCloudy from "../../img/1530369_weather_cloud_clouds_cloudy_icon.png"
+import nightCloudy from "../../img/1530377_weather_fog_foggy_moon_night_icon.png"
 
 function WeatherCard(props) {
   const zip = props.zip
@@ -24,19 +28,26 @@ function WeatherCard(props) {
     }
   }
   console.log(data)
-  let percip = NaN
-  let dayTime = NaN
+  let img = NaN
   if (parseInt(data.percipitation) > 20) { // is it rainy
-    if (isNight(parseInt(data.sunrise), parseInt(data.sunset), parseInt(data.time))) {
-      console.log("night")
-    } else {
-      console.log("day")
+    if (isNight(parseInt(data.sunrise), parseInt(data.sunset), parseInt(data.time))) { //night and rainy
+      img = nightRainy
+    } else { //day and rainy
+      img = dayRainy
     }
-  } else { //is it sunny
-     if (isNight(parseInt(data.sunrise), parseInt(data.sunset), parseInt(data.time))) {
-      console.log("night")
-    } else {
-      console.log("day")
+  } else { //is it not rainy
+    if (isNight(parseInt(data.sunrise), parseInt(data.sunset), parseInt(data.time))) { //night and not rainy
+      if (data.cloud_cover > 30) {
+        img = nightCloudy
+      } else {
+        img = night
+      }
+    } else { //day and sunny
+      if (data.cloud_cover > 30) {
+        img = dayCloudy
+      } else {
+        img = daySunny
+      }
     }
 
   }
@@ -45,10 +56,12 @@ function WeatherCard(props) {
   
   return (
     <>
-    <p>tmp: {data.temperature_2m}</p>
-    <img src={sunny}/>
-    <p>humidity: {data.relative_humidity_2m}%</p>
-    <p>apparent temp: {data.apparent_temperature}</p>
+    <div className="info">
+    <img src={img} className='img'/>
+    <h1 id='temp'>{data.temperature_2m} °F</h1>
+    <h2>{data.relative_humidity_2m}% humidity</h2>
+    <h2>Feels like {data.apparent_temperature} °F</h2>
+    </div>
     </>
   )
   
