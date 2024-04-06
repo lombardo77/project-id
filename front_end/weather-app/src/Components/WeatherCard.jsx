@@ -8,12 +8,10 @@ function WeatherCard(props) {
     const fetchData = async () => {
       const result = await fetch(`http://127.0.0.1:8000/?zip=${zip}`)
       result.json().then(json => setData(json))
-      console.log(zip)
     }
     fetchData()
   }, [zip]);
 
-  console.log(data)
   return (
     <>
     <p>tmp: {data.temperature_2m}</p>
