@@ -1,5 +1,8 @@
 import {useState, useEffect} from 'react'
-function WeatherCard( {zip = "07052" }) {
+
+function WeatherCard(props) {
+  const zip = props.zip
+
   const [data, setData] = useState({})
   useEffect(() => {
     const fetchData = async () => {
@@ -8,10 +11,15 @@ function WeatherCard( {zip = "07052" }) {
       console.log(zip)
     }
     fetchData()
-  }, []);
+  }, [zip]);
+
   console.log(data)
   return (
-    <h1>{data.temperature_2m}</h1>
+    <>
+    <p>tmp: {data.temperature_2m}</p>
+    <p>humidity: {data.relative_humidity_2m}%</p>
+    <p>apparent temp: {data.apparent_temperature}</p>
+    </>
   )
   
 }
