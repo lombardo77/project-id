@@ -7,7 +7,7 @@ import json
 app = FastAPI()
 
 origins = [
-    "http://localhost:5173"
+    "*"
 ]
 
 app.add_middleware(
@@ -49,7 +49,10 @@ def fetch_weather(zip_code):
         "wind_speed_10m"
     ]
 
-    url = f"https://api.open-meteo.com/v1/forecast?latitude={lat}&longitude={long}&current={','.join(vars)}&temperature_unit=fahrenheit"
+    url = f"https://api.open-meteo.com/v1/forecast?latitude={lat}&longitude={long}&current={','.join(vars)}&temperature_unit=fahrenheit&daily=sunset,sunrise"
     response = urlopen(url)
     data_json = json.loads(response.read())
+    data_json["current"]["sunset"] = data_json["daily"]["sunset"][0][-5:-3]
+    data_json["current"]["sunrise"] = data_json["daily"]["sunrise"][0][-5:-3]
+    data_json["current"]["time"] = data_json["current"]["time"][-5:-3]
     return data_json["current"]
