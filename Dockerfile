@@ -1,3 +1,3 @@
-FROM app1_img
+FROM inadev-app
 
 CMD ["sh", "project-id/run.sh"]
