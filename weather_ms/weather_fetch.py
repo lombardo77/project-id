@@ -27,10 +27,10 @@ def fetch_weather(zip_code):
     # TODO: make sure these are valid coordinates
     nomi = pgeocode.Nominatim('us')
     query = nomi.query_postal_code(zip_code)
-
     data = {
         "lat": query["latitude"],
-        "lon": query["longitude"]
+        "lon": query["longitude"],
+        "name": query["county_name"]
     }
 
     lat = data["lat"]
@@ -55,4 +55,5 @@ def fetch_weather(zip_code):
     data_json["current"]["sunset"] = data_json["daily"]["sunset"][0][-5:-3]
     data_json["current"]["sunrise"] = data_json["daily"]["sunrise"][0][-5:-3]
     data_json["current"]["time"] = data_json["current"]["time"][-5:-3]
+    data_json["current"]["name"] = data["name"]
     return data_json["current"]

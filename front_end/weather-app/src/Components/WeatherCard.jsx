@@ -27,7 +27,6 @@ function WeatherCard(props) {
       return true 
     }
   }
-  console.log(data)
   let img = NaN
   if (parseInt(data.percipitation) > 20) { // is it rainy
     if (isNight(parseInt(data.sunrise), parseInt(data.sunset), parseInt(data.time))) { //night and rainy
@@ -52,11 +51,10 @@ function WeatherCard(props) {
 
   }
 
-  
-  
   return (
     <>
     <div className="info">
+    <h1> {data.name} </h1>
     <img src={img} className='img'/>
     <h1 id='temp'>{data.temperature_2m} °F</h1>
     <h2>{data.relative_humidity_2m}% humidity</h2>

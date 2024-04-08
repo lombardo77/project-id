@@ -5,7 +5,7 @@ import {useState, useEffect} from 'react'
 
 function Weather() {
 
-  const [zip, setZip] = useState("90003")
+  const [zip, setZip] = useState("20003")
   const [tmpZip, setTmpZip] = useState("")
 
   const handleChangeProp = (e) => {
