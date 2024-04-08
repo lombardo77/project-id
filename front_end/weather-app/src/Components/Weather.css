@@ -1,11 +1,11 @@
 .app {
   width: 600px;
-  height: 1000px;
-  margin: auto;
+  height: 700px;
+  left-margin: auto;
+  right-margin: auto;
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-top: 75px;
   border-radius: 12px;
   background-image: linear-gradient(180deg, #a1afd8 0%,	#b4a7d6 10%)
 }

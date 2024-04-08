@@ -1,10 +1,10 @@
 import {useState, useEffect} from 'react'
-import daySunny from "../../img/1530392_weather_sun_sunny_temperature_icon.png"
-import dayRainy from "../../img/1530362_weather_clouds_cloudy_forecast_rain_icon.png"
-import night from "../../img/1530382_weather_moon_moonlight_night_icon.png"
-import nightRainy from "../../img/1530379_weather_clouds_moon_night_rain_icon.png"
-import dayCloudy from "../../img/1530369_weather_cloud_clouds_cloudy_icon.png"
-import nightCloudy from "../../img/1530377_weather_fog_foggy_moon_night_icon.png"
+import daySunny from "../../icons_2/1530392_weather_sun_sunny_temperature_icon.png"
+import dayRainy from "../../icons_2/1530362_weather_clouds_cloudy_forecast_rain_icon.png"
+import night from "../../icons_2/1530382_weather_moon_moonlight_night_icon.png"
+import nightRainy from "../../icons_2/1530379_weather_clouds_moon_night_rain_icon.png"
+import dayCloudy from "../../icons_2/1530369_weather_cloud_clouds_cloudy_icon.png"
+import nightCloudy from "../../icons_2/1530377_weather_fog_foggy_moon_night_icon.png"
 
 function WeatherCard(props) {
   const zip = props.zip
